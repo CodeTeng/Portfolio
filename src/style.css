@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html, body {
+    @apply bg-gray-50 dark:bg-[#0a0a0a] text-gray-900 dark:text-white m-0 p-0 overflow-x-hidden w-full;
+    scroll-behavior: smooth;
+  }
+
+  #app {
+    @apply w-full min-h-screen;
+  }
+}
