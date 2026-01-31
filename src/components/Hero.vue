@@ -42,14 +42,14 @@
       :initial="{ opacity: 0, scale: 0.8, x: 50 }"
       :enter="{ opacity: 1, scale: 1, x: 0, transition: { duration: 800, delay: 200, ease: 'easeOut' } }"
     >
-      <div class="relative w-64 h-64 md:w-80 md:h-80 group">
+      <div class="relative w-80 h-80 md:w-96 md:h-96 group">
         <!-- Glow Effect -->
-        <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+        <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
         <!-- Avatar Container -->
-        <div class="relative w-full h-full rounded-full overflow-hidden border-2 border-white/20 dark:border-white/10 bg-white dark:bg-[#1a1a1a] flex items-center justify-center">
+        <div class="relative w-full h-full rounded-xl overflow-hidden border-4 border-cyan-500/50 dark:border-cyan-400/50 bg-gray-900 dark:bg-[#0a0a0a] flex items-center justify-center">
           <img 
-            src="https://api.dicebear.com/9.x/avataaars/svg?seed=Vibe" 
-            alt="Profile Avatar" 
+            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop" 
+            alt="Geek Code Avatar" 
             class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
           />
         </div>
