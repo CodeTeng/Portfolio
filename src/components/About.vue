@@ -34,7 +34,7 @@ const categories = ['Frontend', 'Backend', 'Tools'] as const
           <div class="flex items-center gap-4 mb-4">
             <div class="relative w-20 h-20 rounded-full overflow-hidden border-2 border-purple-500/30">
               <img 
-                src="https://api.dicebear.com/9.x/avataaars/svg?seed=Felix" 
+                src="https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/user_avatar/14/OldnE8LR-avatar.jpg" 
                 alt="About Avatar" 
                 class="w-full h-full object-cover bg-gray-100 dark:bg-[#1a1a1a]"
               />

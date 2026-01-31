@@ -11,12 +11,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'E-Commerce Dashboard',
-    description: '一个基于 Vue 3 和 Tailwind CSS 构建的现代电子商务仪表板，提供实时数据可视化和订单管理功能。',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Vue 3', 'TypeScript', 'Tailwind CSS', 'Chart.js'],
-    link: '#',
-    github: 'https://github.com'
+    title: 'MarkDown 笔记应用',
+    description: 'MarkNote 是一款专为开发者和写作爱好者打造的轻量级、高性能 Markdown 笔记应用',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/content.jpg',
+    tags: ['Vue 3', 'TypeScript', 'Tailwind CSS', 'Marked', 'Highlight.js'],
+    link: 'https://markdown-notes-9up2.vercel.app/',
+    github: 'https://github.com/CodeTeng/MarkdownNotes'
   },
   {
     id: 2,
