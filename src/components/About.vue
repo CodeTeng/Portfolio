@@ -60,7 +60,7 @@ const categories = ['Frontend', 'Backend', 'Tools'] as const
           <!-- Stats -->
           <div class="grid grid-cols-3 gap-4 pt-6">
             <div class="text-center p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-purple-500/50 transition-colors">
-              <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">1</div>
+              <div class="text-3xl font-bold text-gray-900 dark:text-white mb-1">3</div>
               <div class="text-sm text-gray-600 dark:text-gray-400">Years Exp.</div>
             </div>
             <div class="text-center p-4 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 hover:border-blue-500/50 transition-colors">
