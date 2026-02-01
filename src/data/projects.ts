@@ -20,12 +20,12 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: 'Task Management App',
-    description: '简洁高效的任务管理应用，支持拖拽排序、暗黑模式和本地数据持久化。',
-    image: 'https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Vue 3', 'Pinia', 'LocalStorage', 'Drag & Drop'],
-    link: '#',
-    github: 'https://github.com'
+    title: 'Image Generator',
+    description: '基于 React 和 Zhipu AI 构建的现代化 AI 图片生成应用',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/2.jpg',
+    tags: ['React', 'Zhipu AI', 'TypeScript', 'Tailwind CSS'],
+    link: 'https://image-generator-lake-one.vercel.app/',
+    github: 'https://github.com/CodeTeng/ImageGenerator'
   },
   {
     id: 3,
