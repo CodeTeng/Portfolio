@@ -31,7 +31,7 @@ export const projects: Project[] = [
     id: 3,
     title: 'Document Retrieval RAG System',
     description: '一个完整的企业级本地知识库问答系统(RAG)，支持文档上传、解析、向量化存储以及基于大模型的智能检索问答',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1000&auto=format&fit=crop',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/1.jpg',
     tags: ['FastApi', 'LangChain', 'Vue3', '阿里云 DashScope', 'Faiss'],
     link: 'https://document-retrieval-rag-system.vercel.app/',
     github: 'https://github.com/CodeTeng/Document-Retrieval-RAG-System'
