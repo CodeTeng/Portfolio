@@ -29,12 +29,12 @@ export const projects: Project[] = [
   },
   {
     id: 3,
-    title: 'AI Chat Interface',
-    description: '集成了 OpenAI API 的智能对话界面，支持流式响应和代码高亮显示。',
+    title: 'Document Retrieval RAG System',
+    description: '一个完整的企业级本地知识库问答系统(RAG)，支持文档上传、解析、向量化存储以及基于大模型的智能检索问答',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Vue 3', 'OpenAI API', 'Highlight.js', 'WebSocket'],
-    link: '#',
-    github: 'https://github.com'
+    tags: ['FastApi', 'LangChain', 'Vue3', '阿里云 DashScope', 'Faiss'],
+    link: 'https://document-retrieval-rag-system.vercel.app/',
+    github: 'https://github.com/CodeTeng/Document-Retrieval-RAG-System'
   },
   {
     id: 4,
