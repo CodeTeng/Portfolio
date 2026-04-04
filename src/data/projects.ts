@@ -11,6 +11,15 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
+    title: '万能视频下载工具',
+    description: '一款万能视频下载工具，支持B站、抖音、小红书、腾讯视频、YouTube、X等视频网站的下载',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/home.png',
+    tags: ['Vue 3', 'Python3', 'FastAPI', 'yt-dlp', 'ffmpeg', 'Redis'],
+    link: 'https://zailiu-8r0x5w2b5-tengs-projects-4b97e0ad.vercel.app/',
+    github: 'https://github.com/CodeTeng/Zailiu'
+  },
+  {
+    id: 2,
     title: 'MarkDown 笔记应用',
     description: 'MarkNote 是一款专为开发者和写作爱好者打造的轻量级、高性能 Markdown 笔记应用',
     image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/content.jpg',
@@ -19,7 +28,7 @@ export const projects: Project[] = [
     github: 'https://github.com/CodeTeng/MarkdownNotes'
   },
   {
-    id: 2,
+    id: 3,
     title: 'Image Generator',
     description: '基于 React 和 Zhipu AI 构建的现代化 AI 图片生成应用',
     image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/2.jpg',
@@ -28,22 +37,13 @@ export const projects: Project[] = [
     github: 'https://github.com/CodeTeng/ImageGenerator'
   },
   {
-    id: 3,
+    id: 4,
     title: 'Document Retrieval RAG System',
     description: '一个完整的企业级本地知识库问答系统(RAG)，支持文档上传、解析、向量化存储以及基于大模型的智能检索问答',
     image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/1.jpg',
     tags: ['FastApi', 'LangChain', 'Vue3', '阿里云 DashScope', 'Faiss'],
     link: 'https://document-retrieval-rag-system.vercel.app/',
     github: 'https://github.com/CodeTeng/Document-Retrieval-RAG-System'
-  },
-  {
-    id: 4,
-    title: 'Crypto Portfolio Tracker',
-    description: '实时追踪加密货币价格和投资组合表现，集成多个交易所 API。',
-    image: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Vue 3', 'Web3.js', 'ECharts', 'API Integration'],
-    link: '#',
-    github: 'https://github.com'
   },
   {
     id: 5,
