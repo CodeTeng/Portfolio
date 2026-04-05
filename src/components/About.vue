@@ -106,7 +106,7 @@ const categoryMeta: Record<string, { color: string; dot: string }> = {
         >
           <div v-for="category in categories" :key="category">
             <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2 uppercase tracking-wider">
-              <span class="w-2 h-2 rounded-full flex-shrink-0" :class="categoryMeta[category].dot"></span>
+              <span class="w-2 h-2 rounded-full flex-shrink-0" :class="categoryMeta[category]?.dot"></span>
               {{ category }}
             </h4>
             <div class="space-y-3">
@@ -118,7 +118,7 @@ const categoryMeta: Record<string, { color: string; dot: string }> = {
                 <div class="w-full bg-gray-100 dark:bg-white/10 rounded-full h-1.5 overflow-hidden">
                   <div
                     class="h-full rounded-full bg-gradient-to-r"
-                    :class="categoryMeta[category].color"
+                    :class="categoryMeta[category]?.color"
                     v-motion
                     :initial="{ width: '0%' }"
                     :visibleOnce="{ width: `${skill.level}%`, transition: { duration: 1000, delay: 500, ease: 'easeOut' } }"
