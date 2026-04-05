@@ -15,29 +15,20 @@ export const projects: Project[] = [
     description: '一款万能视频下载工具，支持B站、抖音、小红书、腾讯视频、YouTube、X等视频网站的下载',
     image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/home.png',
     tags: ['Vue 3', 'Python3', 'FastAPI', 'yt-dlp', 'ffmpeg', 'Redis'],
-    link: 'https://zailiu-8r0x5w2b5-tengs-projects-4b97e0ad.vercel.app/',
+    link: 'https://zailiu.vercel.app/',
     github: 'https://github.com/CodeTeng/Zailiu'
   },
   {
     id: 2,
-    title: 'MarkDown 笔记应用',
-    description: 'MarkNote 是一款专为开发者和写作爱好者打造的轻量级、高性能 Markdown 笔记应用',
-    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/content.jpg',
-    tags: ['Vue 3', 'TypeScript', 'Tailwind CSS', 'Marked', 'Highlight.js'],
-    link: 'https://markdown-notes-9up2.vercel.app/',
-    github: 'https://github.com/CodeTeng/MarkdownNotes'
+    title: 'Vibe Coding 开发前必做步骤',
+    description: 'Vibe Coding 开发前必做步骤，帮助你快速上手开发',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/1.png',
+    tags: ['Vibe Coding', 'Workflow', 'AI', 'Tools'],
+    link: 'https://vibe-coding-workflow-rho.vercel.app/',
+    github: 'https://github.com/CodeTeng/Vibe-Coding-workflow'
   },
   {
     id: 3,
-    title: 'Image Generator',
-    description: '基于 React 和 Zhipu AI 构建的现代化 AI 图片生成应用',
-    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/2.jpg',
-    tags: ['React', 'Zhipu AI', 'TypeScript', 'Tailwind CSS'],
-    link: 'https://image-generator-lake-one.vercel.app/',
-    github: 'https://github.com/CodeTeng/ImageGenerator'
-  },
-  {
-    id: 4,
     title: 'Document Retrieval RAG System',
     description: '一个完整的企业级本地知识库问答系统(RAG)，支持文档上传、解析、向量化存储以及基于大模型的智能检索问答',
     image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/1.jpg',
@@ -46,13 +37,22 @@ export const projects: Project[] = [
     github: 'https://github.com/CodeTeng/Document-Retrieval-RAG-System'
   },
   {
+    id: 4,
+    title: 'MarkDown 笔记应用',
+    description: 'MarkNote 是一款专为开发者和写作爱好者打造的轻量级、高性能 Markdown 笔记应用',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/content.jpg',
+    tags: ['Vue 3', 'TypeScript', 'Tailwind CSS', 'Marked', 'Highlight.js'],
+    link: 'https://markdown-notes-tawny.vercel.app/',
+    github: 'https://github.com/CodeTeng/MarkdownNotes'
+  },
+  {
     id: 5,
-    title: 'Smart Home Hub',
-    description: '物联网设备控制中心，可视化管理家庭智能设备，支持自动化场景配置。',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Vue 3', 'MQTT', 'IoT', 'Real-time'],
-    link: '#',
-    github: 'https://github.com'
+    title: 'Image Generator',
+    description: '基于 React 和 Zhipu AI 构建的现代化 AI 图片生成应用',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/teng/2.jpg',
+    tags: ['React', 'Zhipu AI', 'TypeScript', 'Tailwind CSS'],
+    link: 'https://image-generator-lake-one.vercel.app/',
+    github: 'https://github.com/CodeTeng/ImageGenerator'
   },
   {
     id: 6,
