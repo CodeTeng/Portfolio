@@ -10,8 +10,8 @@ import Footer from './components/Footer.vue'
   <Header />
   <main class="w-full">
     <Hero />
-    <About />
     <Projects />
+    <About />
   </main>
   <Footer />
 </template>
