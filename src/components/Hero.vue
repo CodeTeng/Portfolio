@@ -1,108 +1,185 @@
 <script setup lang="ts">
+import { Icon } from '@iconify/vue'
+
+const tickerLogos = [
+  { icon: 'simple-icons:cursor', name: 'Cursor' },
+  { icon: 'simple-icons:anthropic', name: 'Claude' },
+  { icon: 'logos:openai-icon', name: 'OpenAI' },
+  { icon: 'logos:java', name: 'Java' },
+  { icon: 'logos:spring-icon', name: 'Spring' },
+  { icon: 'logos:mysql', name: 'MySQL' },
+  { icon: 'logos:redis', name: 'Redis' },
+  { icon: 'logos:elasticsearch', name: 'Elasticsearch' },
+  { icon: 'logos:rabbitmq-icon', name: 'RabbitMQ' },
+  { icon: 'logos:docker-icon', name: 'Docker' },
+  { icon: 'logos:linux-tux', name: 'Linux' },
+  { icon: 'logos:vue', name: 'Vue' },
+  { icon: 'logos:typescript-icon', name: 'TypeScript' },
+  { icon: 'simple-icons:langchain', name: 'LangChain' },
+]
+const ticker = [...tickerLogos, ...tickerLogos]
 </script>
 
 <template>
-  <section class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center gap-12 px-6 py-20 relative overflow-hidden">
-    <!-- Text Content -->
-    <div
-      class="w-full max-w-xl text-center md:text-left space-y-7 relative z-10"
-      v-motion
-      :initial="{ opacity: 0, y: 50 }"
-      :enter="{ opacity: 1, y: 0, transition: { duration: 800, ease: 'easeOut' } }"
-    >
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 text-sm font-medium backdrop-blur-sm">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
-        </span>
-        Vibe Coding · 拥抱 AI · 持续构建
-      </div>
-
-      <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white leading-tight">
-        Hello, I'm <br class="md:hidden" />
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 animate-gradient-x">
-          Vibe Coder
-        </span>
-      </h1>
-
-      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl mx-auto md:mx-0">
-        用 AI 加速开发，用工具放大创造力。<br />
-        专注 <span class="text-cyan-600 dark:text-cyan-400 font-medium">大模型落地</span>、<span class="text-blue-600 dark:text-blue-400 font-medium">RAG / Agent</span> 与全栈工程实践，
-        让每一个想法都快速变成可运行的产品。
-      </p>
-
-      <!-- Tags -->
-      <div class="flex flex-wrap gap-2 justify-center md:justify-start">
-        <span v-for="tag in ['LLM', 'RAG', 'Agent', 'Cursor', 'Claude Code', 'Full Stack']" :key="tag"
-          class="px-3 py-1 text-xs font-medium rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-600 dark:text-gray-400 hover:border-cyan-500/50 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-default">
-          {{ tag }}
-        </span>
-      </div>
-
-      <div class="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
-        <a
-          href="#about"
-          class="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold rounded-full shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 cursor-pointer text-center"
-        >
-          关于我
-        </a>
-        <a
-          href="#projects"
-          class="px-8 py-3 border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:border-white/40 dark:hover:bg-white/5 font-semibold rounded-full transition-all cursor-pointer text-center"
-        >
-          查看作品
-        </a>
-      </div>
+  <!--
+    Hero — Apple keynote style.
+    Two-column on desktop: left is the editorial "story" (eyebrow, headline, lede, CTAs);
+    right is a refined orb visual that acts as the page's signature mark.
+  -->
+  <section
+    id="hero"
+    class="relative isolate min-h-screen flex items-center px-6 pt-32 pb-16 md:pt-36 md:pb-24 overflow-hidden"
+  >
+    <!-- Atmospheric background: soft mesh gradients on both themes -->
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-gray-50 dark:from-black dark:via-[#070710] dark:to-black"></div>
+      <div class="absolute -top-40 right-[-10%] w-[680px] h-[680px] rounded-full bg-blue-500/15 dark:bg-blue-600/30 blur-[120px]"></div>
+      <div class="absolute top-1/3 left-[-15%] w-[640px] h-[640px] rounded-full bg-fuchsia-400/10 dark:bg-fuchsia-600/25 blur-[120px]"></div>
+      <div class="absolute bottom-[-10%] left-1/3 w-[520px] h-[520px] rounded-full bg-cyan-300/10 dark:bg-cyan-500/20 blur-[110px]"></div>
+      <!-- subtle grid -->
+      <div
+        class="absolute inset-0 opacity-[0.08] dark:opacity-[0.06]"
+        style="background-image: linear-gradient(to right, currentColor 1px, transparent 1px), linear-gradient(to bottom, currentColor 1px, transparent 1px); background-size: 56px 56px; color: rgb(120 120 120);"
+      ></div>
     </div>
 
-    <!-- Avatar/Visual — enlarged -->
-    <div
-      class="flex justify-center md:justify-end relative z-10 flex-shrink-0"
-      v-motion
-      :initial="{ opacity: 0, scale: 0.8, x: 50 }"
-      :enter="{ opacity: 1, scale: 1, x: 0, transition: { duration: 800, delay: 200, ease: 'easeOut' } }"
-    >
-      <div class="relative w-80 h-80 md:w-[480px] md:h-[480px] group">
-        <!-- Outer Glow -->
-        <div class="absolute -inset-2 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-2xl blur-lg opacity-30 group-hover:opacity-55 transition duration-700"></div>
-        <!-- Floating decoration dots -->
-        <div class="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-cyan-500/80 blur-sm animate-pulse"></div>
-        <div class="absolute -bottom-3 -left-3 w-4 h-4 rounded-full bg-purple-500/80 blur-sm animate-pulse" style="animation-delay: 1s;"></div>
-        <!-- Image Container -->
-        <div class="relative w-full h-full rounded-2xl overflow-hidden border-2 border-cyan-500/40 dark:border-cyan-400/40 bg-gray-900 dark:bg-[#0a0a0a]">
-          <img
-            src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?q=80&w=1200&auto=format&fit=crop"
-            alt="AI Development"
-            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105"
-          />
-          <!-- Subtle overlay gradient for text legibility -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-          <!-- Corner label -->
-          <div class="absolute bottom-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-sm border border-white/10">
-            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-            <span class="text-white text-xs font-medium">Vibe Coding in Progress</span>
+    <div class="w-full max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <!-- Left: editorial story -->
+      <div
+        class="lg:col-span-7 text-center lg:text-left"
+        v-motion
+        :initial="{ opacity: 0, y: 32 }"
+        :enter="{ opacity: 1, y: 0, transition: { duration: 900, ease: [0.22, 1, 0.36, 1] } }"
+      >
+        <!-- Eyebrow / status line -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-black/10 dark:border-white/15 bg-white/60 dark:bg-white/5 backdrop-blur text-xs font-medium text-gray-700 dark:text-gray-300 animate-float">
+          <span class="relative flex h-1.5 w-1.5">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-70 animate-ping"></span>
+            <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+          </span>
+          <span>2027 校招</span>
+        </div>
+
+        <!-- Display headline -->
+        <h1 class="text-display mt-7 text-[44px] leading-[1.05] sm:text-6xl lg:text-[80px] xl:text-[88px] text-gray-900 dark:text-white">
+          用 AI 把想法
+          <br class="hidden sm:block" />
+          <span class="text-gradient-cool">变成可运行的产品</span>
+        </h1>
+
+        <!-- Lede -->
+        <p class="mt-7 text-lg lg:text-xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-2xl lg:pr-6">
+          木子 Teng — 北京交通大学 计算机硕士。
+          深度使用 <span class="font-medium text-gray-900 dark:text-white">Cursor、Claude Code</span> 等 AI 编程工具，
+          擅长将 <span class="font-medium text-gray-900 dark:text-white">Vibe Coding</span> 与 <span class="font-medium text-gray-900 dark:text-white">Spec Coding (SDD)</span> 结合，
+          让模型产出可读、可测试、可维护的生产代码。
+        </p>
+
+        <!-- KPI strip - Apple-product-page style -->
+        <div class="mt-10 grid grid-cols-3 gap-4 max-w-xl mx-auto lg:mx-0">
+          <div class="text-center lg:text-left">
+            <div class="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">4</div>
+            <div class="mt-1 text-xs uppercase tracking-widest text-gray-500 dark:text-gray-500">大厂 实习</div>
+          </div>
+          <div class="text-center lg:text-left border-l border-black/10 dark:border-white/10 pl-4">
+            <div class="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">100<span class="text-xl">w+</span></div>
+            <div class="mt-1 text-xs uppercase tracking-widest text-gray-500 dark:text-gray-500">已发布字数</div>
+          </div>
+          <div class="text-center lg:text-left border-l border-black/10 dark:border-white/10 pl-4">
+            <div class="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">20<span class="text-xl">+</span></div>
+            <div class="mt-1 text-xs uppercase tracking-widest text-gray-500 dark:text-gray-500">竞赛获奖</div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="mt-10 flex flex-wrap gap-3 justify-center lg:justify-start">
+          <a
+            href="#projects"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gray-900 text-white dark:bg-white dark:text-gray-900 text-[15px] font-semibold hover:opacity-90 transition shadow-lg shadow-blue-500/10 dark:shadow-white/5"
+          >
+            查看作品
+            <Icon icon="lucide:arrow-right" class="w-4 h-4" />
+          </a>
+          <a
+            href="#experience"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-black/15 dark:border-white/15 text-gray-900 dark:text-white text-[15px] font-semibold hover:bg-black/5 dark:hover:bg-white/5 transition"
+          >
+            实习经历
+            <Icon icon="lucide:briefcase" class="w-4 h-4" />
+          </a>
+          <a
+            href="https://www.yuque.com/ambition-bcpii"
+            target="_blank"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-[15px] font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            语雀笔记
+            <Icon icon="lucide:arrow-up-right" class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: signature visual (Apple Vision-Pro-ish glass orb) -->
+      <div
+        class="lg:col-span-5 flex justify-center lg:justify-end"
+        v-motion
+        :initial="{ opacity: 0, scale: 0.9 }"
+        :enter="{ opacity: 1, scale: 1, transition: { duration: 1000, delay: 200, ease: [0.22, 1, 0.36, 1] } }"
+      >
+        <div class="relative w-[300px] h-[300px] sm:w-[380px] sm:h-[380px] lg:w-[440px] lg:h-[440px]">
+          <!-- conic glow ring -->
+          <div class="absolute inset-0 rounded-full opacity-90"
+            style="background: conic-gradient(from 0deg, #5ac8fa, #007aff, #af52de, #ff375f, #ff9f0a, #5ac8fa); filter: blur(48px);"
+          ></div>
+          <!-- glass orb -->
+          <div class="absolute inset-6 rounded-full overflow-hidden border border-white/30 dark:border-white/10 backdrop-blur-xl bg-white/30 dark:bg-white/5 shadow-2xl">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/40 via-white/0 to-transparent dark:from-white/10"></div>
+            <img
+              src="https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/user_avatar/14/OldnE8LR-avatar.jpg"
+              alt="Teng"
+              class="absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-90"
+            />
+            <!-- inner reflection -->
+            <div class="absolute -top-1/4 left-0 w-full h-1/2 bg-gradient-to-b from-white/60 to-transparent dark:from-white/20 rounded-full blur-2xl pointer-events-none"></div>
+          </div>
+
+          <!-- floating chips around orb -->
+          <div class="absolute -top-3 -left-2 px-3 py-1.5 rounded-full bg-white/90 dark:bg-white/10 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-lg flex items-center gap-2 text-xs font-medium text-gray-800 dark:text-gray-200 animate-float">
+            <Icon icon="simple-icons:cursor" class="w-3.5 h-3.5" />
+            Cursor
+          </div>
+          <div class="absolute top-12 -right-3 px-3 py-1.5 rounded-full bg-white/90 dark:bg-white/10 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-lg flex items-center gap-2 text-xs font-medium text-gray-800 dark:text-gray-200 animate-float" style="animation-delay: 1s;">
+            <Icon icon="simple-icons:anthropic" class="w-3.5 h-3.5" />
+            Claude Code
+          </div>
+          <div class="absolute -bottom-2 -left-4 px-3 py-1.5 rounded-full bg-white/90 dark:bg-white/10 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-lg flex items-center gap-2 text-xs font-medium text-gray-800 dark:text-gray-200 animate-float" style="animation-delay: 1.5s;">
+            <Icon icon="logos:java" class="w-3.5 h-3.5" />
+            Spring Boot
+          </div>
+          <div class="absolute bottom-8 -right-4 px-3 py-1.5 rounded-full bg-white/90 dark:bg-white/10 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-lg flex items-center gap-2 text-xs font-medium text-gray-800 dark:text-gray-200 animate-float" style="animation-delay: 2s;">
+            <Icon icon="simple-icons:langchain" class="w-3.5 h-3.5" />
+            RAG / Agent
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Background Decor -->
-    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-[500px] h-[500px] bg-purple-500/8 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-[500px] h-[500px] bg-cyan-500/8 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Tech ticker — Apple-style "Designed by" footer for hero -->
+    <div class="absolute bottom-0 left-0 right-0 border-t border-black/5 dark:border-white/5 bg-white/60 dark:bg-white/[0.02] backdrop-blur-md">
+      <div class="relative overflow-hidden py-5">
+        <!-- side fades -->
+        <div class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white dark:from-black to-transparent z-10"></div>
+        <div class="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white dark:from-black to-transparent z-10"></div>
+        <div class="flex gap-12 animate-marquee whitespace-nowrap text-gray-500 dark:text-gray-500">
+          <div
+            v-for="(item, i) in ticker"
+            :key="i"
+            class="inline-flex items-center gap-2 text-sm"
+          >
+            <Icon :icon="item.icon" class="w-5 h-5" />
+            <span class="font-medium">{{ item.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
-
-<style scoped>
-.animate-gradient-x {
-  background-size: 200% 200%;
-  animation: gradient-x 3s ease infinite;
-}
-
-@keyframes gradient-x {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-</style>

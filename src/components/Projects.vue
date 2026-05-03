@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { Icon } from '@iconify/vue'
 import { projects } from '../data/projects'
 
 const itemsPerPage = 6
@@ -19,125 +20,162 @@ const goToPage = (page: number) => {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
   }
 }
+
+const openGithub = (url?: string) => {
+  if (url) window.open(url, '_blank')
+}
 </script>
 
 <template>
-  <section id="projects" class="py-20 px-6 bg-gray-50 dark:bg-[#0a0a0a] text-gray-900 dark:text-white">
+  <!--
+    Projects — Apple "Featured" gallery.
+    Section sits on a slightly different surface (gray-50 / near-black)
+    and uses larger cards with generous internal padding.
+  -->
+  <section
+    id="projects"
+    class="relative py-24 md:py-32 px-6 bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-white overflow-hidden"
+  >
+    <div class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full bg-purple-500/5 dark:bg-purple-500/10 blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-cyan-500/5 dark:bg-cyan-500/10 blur-3xl"></div>
+    </div>
+
     <div class="max-w-7xl mx-auto">
-      <div 
-        class="mb-12 text-center md:text-left"
+      <!-- Header -->
+      <div
+        class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14 md:mb-20"
         v-motion
-        :initial="{ opacity: 0, y: 50 }"
-        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 800, ease: 'easeOut' } }"
+        :initial="{ opacity: 0, y: 32 }"
+        :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 800, ease: [0.22, 1, 0.36, 1] } }"
       >
-        <h2 class="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 inline-block">
-          Featured Projects
-        </h2>
-        <p class="mt-4 text-gray-600 dark:text-gray-400 text-lg">
-          这里展示了我的一些个人项目和实验性作品。
-        </p>
+        <div class="max-w-3xl">
+          <div class="text-eyebrow text-purple-600 dark:text-purple-400">Featured Work</div>
+          <h2 class="text-display mt-4 text-4xl md:text-6xl text-gray-900 dark:text-white">
+            从想法到产品，
+            <br class="hidden md:block" />
+            <span class="text-gradient-cool">一气呵成。</span>
+          </h2>
+          <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            一些与 AI、全栈、工具链相关的个人作品 —— 大多数都跑在线上，可点开体验。
+          </p>
+        </div>
+
+        <a
+          href="https://github.com/CodeTeng"
+          target="_blank"
+          class="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/15 dark:border-white/15 text-sm font-semibold text-gray-900 dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition"
+        >
+          全部项目
+          <Icon icon="lucide:arrow-up-right" class="w-4 h-4" />
+        </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[600px]">
-        <div 
-          v-for="(project, index) in paginatedProjects" 
-          :key="project.id" 
-          class="group bg-white dark:bg-[#1a1a1a] rounded-xl overflow-hidden border border-gray-200 dark:border-white/10 hover:border-purple-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 flex flex-col"
+      <!-- Cards grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <a
+          v-for="(project, index) in paginatedProjects"
+          :key="project.id"
+          :href="project.link"
+          target="_blank"
+          class="group relative block rounded-3xl overflow-hidden bg-white dark:bg-white/[0.04] border border-black/5 dark:border-white/10 hover:border-black/10 dark:hover:border-white/20 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/10"
           v-motion
-          :initial="{ opacity: 0, y: 50 }"
-          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 500, delay: index * 100, ease: 'easeOut' } }"
+          :initial="{ opacity: 0, y: 40 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: index * 80, ease: [0.22, 1, 0.36, 1] } }"
         >
-          <!-- Image Container -->
-          <div class="relative h-48 overflow-hidden">
-            <div class="absolute inset-0 bg-black/5 dark:bg-black/20 group-hover:bg-transparent transition-colors z-10"></div>
-            <img 
-              :src="project.image" 
-              :alt="project.title" 
+          <!-- Image -->
+          <div class="relative aspect-[16/10] overflow-hidden">
+            <img
+              :src="project.image"
+              :alt="project.title"
               loading="lazy"
-              class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70 group-hover:opacity-50 transition-opacity"></div>
+
+            <!-- corner action chip -->
+            <div class="absolute top-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white/90 backdrop-blur text-gray-900 shadow-sm opacity-0 group-hover:opacity-100 transition">
+              查看
+              <Icon icon="lucide:arrow-up-right" class="w-3 h-3" />
+            </div>
           </div>
 
           <!-- Content -->
           <div class="p-6">
-            <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+            <h3 class="text-lg md:text-xl font-semibold tracking-tight text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               {{ project.title }}
             </h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-3">
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-3">
               {{ project.description }}
             </p>
-            
+
             <!-- Tags -->
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span 
-                v-for="tag in project.tags" 
+            <div class="mt-4 flex flex-wrap gap-1.5">
+              <span
+                v-for="tag in project.tags"
                 :key="tag"
-                class="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-300 rounded-full border border-gray-200 dark:border-white/10"
+                class="px-2.5 py-1 text-[11px] font-medium rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300"
               >
                 {{ tag }}
               </span>
             </div>
 
-            <!-- Links -->
-            <div class="flex items-center gap-4 mt-auto">
-              <a 
-                :href="project.link" 
-                target="_blank"
-                class="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
-              >
-                <span>Live Demo</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </a>
-              <a 
+            <!-- Footer links -->
+            <div class="mt-5 pt-4 border-t border-black/5 dark:border-white/10 flex items-center justify-between">
+              <span class="inline-flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white">
+                <Icon icon="lucide:globe" class="w-4 h-4" />
+                Live Demo
+              </span>
+              <span
                 v-if="project.github"
-                :href="project.github" 
-                target="_blank"
-                class="flex items-center gap-2 text-sm font-semibold text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                class="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition"
+                @click.stop.prevent="openGithub(project.github)"
               >
-                <span>GitHub</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </a>
+                <Icon icon="simple-icons:github" class="w-4 h-4" />
+                GitHub
+              </span>
             </div>
           </div>
-        </div>
+        </a>
       </div>
 
-      <!-- Pagination Controls -->
-      <div v-if="totalPages > 1" class="mt-12 flex justify-center items-center gap-4">
-        <button 
+      <!-- Pagination - Apple-style segmented control -->
+      <div
+        v-if="totalPages > 1"
+        class="mt-12 md:mt-16 flex justify-center items-center gap-3"
+      >
+        <button
           @click="goToPage(currentPage - 1)"
           :disabled="currentPage === 1"
-          class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+          class="w-9 h-9 rounded-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/15 text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center"
+          aria-label="Previous page"
         >
-          Previous
+          <Icon icon="lucide:chevron-left" class="w-4 h-4" />
         </button>
-        
-        <div class="flex gap-2">
-          <button 
-            v-for="page in totalPages" 
+
+        <div class="inline-flex items-center gap-1 p-1 rounded-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/15">
+          <button
+            v-for="page in totalPages"
             :key="page"
             @click="goToPage(page)"
-            class="w-10 h-10 rounded-lg border transition-all flex items-center justify-center"
-            :class="[
-              currentPage === page 
-                ? 'bg-purple-600 border-purple-500 text-white' 
-                : 'bg-gray-100 dark:bg-white/5 border-gray-200 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white'
-            ]"
+            class="w-8 h-8 rounded-full text-sm font-medium transition flex items-center justify-center"
+            :class="
+              currentPage === page
+                ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900'
+                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+            "
           >
             {{ page }}
           </button>
         </div>
 
-        <button 
+        <button
           @click="goToPage(currentPage + 1)"
           :disabled="currentPage === totalPages"
-          class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+          class="w-9 h-9 rounded-full bg-white dark:bg-white/5 border border-black/10 dark:border-white/15 text-gray-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center"
+          aria-label="Next page"
         >
-          Next
+          <Icon icon="lucide:chevron-right" class="w-4 h-4" />
         </button>
       </div>
     </div>
