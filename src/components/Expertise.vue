@@ -61,20 +61,20 @@ const skillsByCategory = (cat: Skill['category']) => skills.filter(s => s.catego
               </div>
               <div>
                 <div class="text-xs uppercase tracking-widest text-white/80">AI 工程</div>
-                <div class="text-sm text-white/90">Vibe Coding · Spec Coding (SDD)</div>
+                <div class="text-sm text-white/90">AI Coding · Prompt · MCP</div>
               </div>
             </div>
 
             <h3 class="mt-auto text-3xl md:text-5xl font-semibold tracking-tight leading-[1.05]">
-              把 AI 产出
+              用 AI 工具
               <br />
-              打磨为生产代码。
+              极致提效开发。
             </h3>
 
             <p class="mt-4 text-white/85 max-w-xl leading-relaxed">
-              深度使用 Cursor、Claude Code，结合 Skills、MCP、Rules、Subagent 等技巧，
-              约束与扩展模型能力。熟悉 LangChain、Spring AI 等 AI 应用开发框架，
-              理解 RAG / MCP / Agent 等技术方向，掌握 Prompt 工程与常见优化技巧。
+              熟练使用 Claude Code、Cursor 等 AI 编程工具，具备扎实的 Prompt 工程与调优能力；
+              熟练运用 MCP、Skills、Rules、Subagent 等机制提升代码生成质量，
+              实现生产级代码开发，极大提高开发效率。
             </p>
 
             <div class="mt-6 flex flex-wrap gap-2">
@@ -129,6 +129,130 @@ const skillsByCategory = (cat: Skill['category']) => skills.filter(s => s.catego
                 <Icon :icon="s.icon" class="w-3 h-3" />
                 {{ s.name }}
               </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent -->
+        <div
+          class="group relative col-span-1 sm:col-span-1 lg:col-span-3 rounded-3xl overflow-hidden bg-gradient-to-br from-violet-500 via-purple-500 to-indigo-600 p-6 md:p-7 text-white shadow-lg shadow-violet-500/15"
+          v-motion
+          :initial="{ opacity: 0, y: 30 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: 250, ease: [0.22, 1, 0.36, 1] } }"
+        >
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_15%,rgba(255,255,255,0.3),transparent_55%)]"></div>
+          <div class="relative h-full flex flex-col">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center border border-white/30">
+                <Icon icon="lucide:brain" class="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-white/80">Agent</div>
+                <div class="text-sm text-white/90">ReAct · Tool Calling · Multi-Agent</div>
+              </div>
+            </div>
+
+            <h3 class="mt-4 text-xl md:text-2xl font-semibold tracking-tight">
+              智能体架构设计。
+            </h3>
+            <p class="mt-2 text-sm text-white/85 leading-relaxed">
+              深入理解 Agent 架构设计，掌握 ReAct、Plan-and-Execute 等推理范式，
+              熟悉 Context Engineering、Memory、Tool / Function Calling、多 Agent 协作等核心机制。
+            </p>
+
+            <div class="mt-auto pt-4 flex flex-wrap gap-1.5">
+              <span
+                v-for="s in skillsByCategory('Agent')"
+                :key="s.name"
+                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/15 backdrop-blur text-[11px] font-medium border border-white/20"
+              >
+                <Icon :icon="s.icon" class="w-3 h-3" />
+                {{ s.name }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RAG -->
+        <div
+          class="group relative col-span-1 sm:col-span-1 lg:col-span-3 rounded-3xl overflow-hidden bg-white dark:bg-white/[0.03] border border-black/5 dark:border-white/10 p-6 md:p-7 hover:border-teal-500/30 transition-all duration-500"
+          v-motion
+          :initial="{ opacity: 0, y: 30 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: 300, ease: [0.22, 1, 0.36, 1] } }"
+        >
+          <div class="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-teal-500/10 dark:bg-teal-500/15 blur-2xl group-hover:scale-125 transition-transform duration-700"></div>
+          <div class="relative h-full flex flex-col">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-teal-500/10 dark:bg-teal-500/15 flex items-center justify-center">
+                <Icon icon="lucide:search" class="w-5 h-5 text-teal-600 dark:text-teal-400" />
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-teal-600 dark:text-teal-400">RAG</div>
+                <div class="text-sm text-gray-500 dark:text-gray-500">Hybrid Search · Rerank · Graph RAG</div>
+              </div>
+            </div>
+
+            <h3 class="mt-3 text-xl md:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+              检索增强生成。
+            </h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              掌握文档切分、Embedding 选型、Hybrid Search、Rerank 等关键技术；
+              熟悉 Query Rewrite、Retriever 优化，了解 Graph RAG、Agentic RAG 前沿架构。
+            </p>
+
+            <div class="mt-auto pt-4 flex flex-wrap gap-1.5">
+              <span
+                v-for="s in skillsByCategory('RAG')"
+                :key="s.name"
+                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 dark:bg-white/5 text-[11px] font-medium text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/10"
+              >
+                <Icon :icon="s.icon" class="w-3 h-3" />
+                {{ s.name }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI 应用框架 -->
+        <div
+          class="group relative col-span-1 sm:col-span-2 lg:col-span-6 rounded-3xl overflow-hidden bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 p-6 md:p-7 text-white shadow-lg shadow-orange-500/15"
+          v-motion
+          :initial="{ opacity: 0, y: 30 }"
+          :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: 350, ease: [0.22, 1, 0.36, 1] } }"
+        >
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(255,255,255,0.3),transparent_55%)]"></div>
+          <div class="relative h-full flex flex-col">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center border border-white/30">
+                <Icon icon="lucide:blocks" class="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <div class="text-xs uppercase tracking-widest text-white/80">AI 应用框架</div>
+                <div class="text-sm text-white/90">LangChain · LangGraph · Dify</div>
+              </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mt-auto">
+              <div>
+                <h3 class="text-xl md:text-2xl font-semibold tracking-tight">
+                  从原型到上线的端到端落地。
+                </h3>
+                <p class="mt-2 text-sm text-white/85 leading-relaxed max-w-2xl">
+                  熟练使用 LangChain、LangGraph、Dify 等 AI 应用开发框架，
+                  能够灵活组合 Agent、RAG、MCP 等能力，完成从原型设计到服务上线的端到端落地能力。
+                </p>
+              </div>
+
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  v-for="s in skillsByCategory('AIFramework')"
+                  :key="s.name"
+                  class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/15 backdrop-blur text-[11px] font-medium border border-white/20"
+                >
+                  <Icon :icon="s.icon" class="w-3 h-3" />
+                  {{ s.name }}
+                </span>
+              </div>
             </div>
           </div>
         </div>

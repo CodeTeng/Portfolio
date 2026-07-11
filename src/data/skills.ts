@@ -2,16 +2,36 @@ export interface Skill {
   name: string
   icon: string
   level: number // 1-100
-  category: 'AI' | 'Backend' | 'Database' | 'Middleware' | 'DevOps' | 'Frontend'
+  category: 'AI' | 'Agent' | 'RAG' | 'AIFramework' | 'Backend' | 'Database' | 'Middleware' | 'DevOps' | 'Frontend'
 }
 
 export const skills: Skill[] = [
-  // AI / 智能开发
-  { name: 'Cursor',       icon: 'simple-icons:cursor',     level: 95, category: 'AI' },
+  // AI 编程工具
   { name: 'Claude Code',  icon: 'simple-icons:anthropic',  level: 92, category: 'AI' },
-  { name: 'LangChain',    icon: 'simple-icons:langchain',  level: 80, category: 'AI' },
-  { name: 'Spring AI',    icon: 'simple-icons:spring',     level: 75, category: 'AI' },
-  { name: 'RAG / Agent',  icon: 'lucide:bot',              level: 85, category: 'AI' },
+  { name: 'Cursor',       icon: 'simple-icons:cursor',     level: 95, category: 'AI' },
+  { name: 'MCP',          icon: 'lucide:plug',             level: 88, category: 'AI' },
+  { name: 'Prompt 工程',   icon: 'lucide:wand-2',           level: 90, category: 'AI' },
+  { name: 'Skills / Rules',icon: 'lucide:settings-2',      level: 85, category: 'AI' },
+
+  // Agent
+  { name: 'ReAct',            icon: 'lucide:brain',         level: 85, category: 'Agent' },
+  { name: 'Plan-and-Execute', icon: 'lucide:list-checks',   level: 82, category: 'Agent' },
+  { name: 'Tool Calling',     icon: 'lucide:wrench',        level: 88, category: 'Agent' },
+  { name: '多 Agent 协作',     icon: 'lucide:users',         level: 80, category: 'Agent' },
+  { name: 'Memory',           icon: 'lucide:hard-drive',    level: 83, category: 'Agent' },
+
+  // RAG
+  { name: '文档切分',          icon: 'lucide:scissors',      level: 85, category: 'RAG' },
+  { name: 'Embedding',        icon: 'lucide:layers',        level: 82, category: 'RAG' },
+  { name: 'Hybrid Search',    icon: 'lucide:search',        level: 80, category: 'RAG' },
+  { name: 'Rerank',           icon: 'lucide:sort-desc',     level: 78, category: 'RAG' },
+  { name: 'Graph RAG',        icon: 'lucide:git-branch',    level: 75, category: 'RAG' },
+
+  // AI 应用框架
+  { name: 'LangChain',    icon: 'simple-icons:langchain',  level: 80, category: 'AIFramework' },
+  { name: 'LangGraph',    icon: 'lucide:project',          level: 78, category: 'AIFramework' },
+  { name: 'Dify',         icon: 'lucide:blocks',           level: 80, category: 'AIFramework' },
+  { name: 'Spring AI',    icon: 'simple-icons:spring',     level: 75, category: 'AIFramework' },
 
   // Backend
   { name: 'Java',         icon: 'logos:java',              level: 95, category: 'Backend' },
@@ -58,10 +78,34 @@ export const skillCategories: SkillCategoryMeta[] = [
   {
     key: 'AI',
     title: 'AI 工程',
-    subtitle: 'Vibe Coding · Spec Coding',
-    description: '深度使用 Cursor / Claude Code，结合 Skills、MCP、Rules、Subagent 等技巧约束与扩展模型能力，把 AI 产出打磨为可读、可测试、可维护的生产代码。',
+    subtitle: 'AI Coding · Prompt · MCP',
+    description: '熟练使用 Claude Code、Cursor 等 AI 编程工具，具备扎实的 Prompt 工程与调优能力；熟练运用 MCP、Skills、Rules、Subagent 等机制提升代码生成质量，实现生产级代码开发，极大提高开发效率。',
     accent: 'from-pink-500 via-fuchsia-500 to-purple-600',
     ring: 'group-hover:ring-fuchsia-500/40',
+  },
+  {
+    key: 'Agent',
+    title: 'Agent',
+    subtitle: 'ReAct · Tool Calling · Multi-Agent',
+    description: '深入理解 Agent 架构设计，掌握 ReAct、Plan-and-Execute 等推理范式，熟悉 Context Engineering、Memory、Tool / Function Calling、多 Agent 协作等核心机制。',
+    accent: 'from-violet-500 via-purple-500 to-indigo-600',
+    ring: 'group-hover:ring-violet-500/40',
+  },
+  {
+    key: 'RAG',
+    title: 'RAG',
+    subtitle: 'Hybrid Search · Rerank · Graph RAG',
+    description: '深入理解 RAG 架构，掌握文档切分、Embedding 模型选型、Hybrid Search、向量检索、Rerank 等关键技术；熟悉 Query Rewrite、Retriever 优化及 RAG 评测体系，了解 Graph RAG、Agentic RAG 等前沿架构。',
+    accent: 'from-teal-500 via-cyan-500 to-sky-500',
+    ring: 'group-hover:ring-teal-500/40',
+  },
+  {
+    key: 'AIFramework',
+    title: 'AI 应用框架',
+    subtitle: 'LangChain · LangGraph · Dify',
+    description: '熟练使用 LangChain、LangGraph、Dify 等 AI 应用开发框架，能够灵活组合 Agent、RAG、MCP 等能力，完成从原型设计到服务上线的端到端落地能力。',
+    accent: 'from-amber-500 via-orange-500 to-red-500',
+    ring: 'group-hover:ring-amber-500/40',
   },
   {
     key: 'Backend',

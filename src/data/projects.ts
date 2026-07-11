@@ -10,6 +10,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 9,
+    title: 'KnowFlow RAG',
+    description: 'KnowFlow RAG 是一个企业级智能问答系统，覆盖从文档入库到智能问答的完整链路，聚焦检索增强生成场景下的核心工程难题。',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/%E7%94%A8%E6%88%B7%E9%97%AE%E7%AD%94%E7%95%8C%E9%9D%A2.png',
+    tags: [' RAG', '向量检索', '多模型编排', 'SSE'],
+    link: 'https://know-flow-phi.vercel.app/',
+    github: 'https://github.com/CodeTeng/KnowFlow-'
+  },
+  {
     id: 1,
     title: 'mini-cc',
     description: 'mini-cc 是一个用 Python 编写的 Claude Code 精简教学实现：在单一 OpenAI 兼容 Provider 之上，提供 Agent Loop、工具系统、权限闸门、上下文与预算管理、以及会话级 Memory。适合用来理解「Agent Harness」各模块如何协作。',
@@ -80,15 +89,6 @@ export const projects: Project[] = [
     tags: ['React', 'Zhipu AI', 'TypeScript', 'Tailwind CSS'],
     link: 'https://image-generator-lake-one.vercel.app/',
     github: 'https://github.com/CodeTeng/ImageGenerator'
-  },
-  {
-    id: 9,
-    title: 'Creative Portfolio',
-    description: '为设计师打造的个人作品集网站模板，注重视觉交互和排版设计。',
-    image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Vue 3', 'GSAP', 'Sass', 'Responsive'],
-    link: '#',
-    github: 'https://github.com'
   },
   {
     id: 10,

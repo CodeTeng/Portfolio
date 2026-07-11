@@ -16,6 +16,8 @@ const tickerLogos = [
   { icon: 'logos:vue', name: 'Vue' },
   { icon: 'logos:typescript-icon', name: 'TypeScript' },
   { icon: 'simple-icons:langchain', name: 'LangChain' },
+  { icon: 'lucide:brain', name: 'Agent' },
+  { icon: 'lucide:search', name: 'RAG' },
 ]
 const ticker = [...tickerLogos, ...tickerLogos]
 </script>
@@ -70,9 +72,8 @@ const ticker = [...tickerLogos, ...tickerLogos]
         <!-- Lede -->
         <p class="mt-7 text-lg lg:text-xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-2xl lg:pr-6">
           木子 Teng — 北京交通大学 计算机硕士。
-          深度使用 <span class="font-medium text-gray-900 dark:text-white">Cursor、Claude Code</span> 等 AI 编程工具，
-          擅长将 <span class="font-medium text-gray-900 dark:text-white">Vibe Coding</span> 与 <span class="font-medium text-gray-900 dark:text-white">Spec Coding (SDD)</span> 结合，
-          让模型产出可读、可测试、可维护的生产代码。
+          驾驭 AI 而非依赖 AI——用 <span class="font-medium text-gray-900 dark:text-white">Cursor、Claude Code</span> 快速上手、极速交付，
+          同时用工程功底兜底，确保 AI 产出的每一行代码都 <span class="font-medium text-gray-900 dark:text-white">可读、可测、可维护</span>。
         </p>
 
         <!-- KPI strip - Apple-product-page style -->
