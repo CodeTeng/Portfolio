@@ -24,6 +24,16 @@ const goToPage = (page: number) => {
 const openGithub = (url?: string) => {
   if (url) window.open(url, '_blank')
 }
+
+// Apple-style card glow: track mouse position for radial highlight
+const handleCardMouseMove = (event: MouseEvent) => {
+  const card = (event.currentTarget as HTMLElement)
+  const rect = card.getBoundingClientRect()
+  const x = ((event.clientX - rect.left) / rect.width) * 100
+  const y = ((event.clientY - rect.top) / rect.height) * 100
+  card.style.setProperty('--mouse-x', `${x}%`)
+  card.style.setProperty('--mouse-y', `${y}%`)
+}
 </script>
 
 <template>
@@ -78,7 +88,8 @@ const openGithub = (url?: string) => {
           :key="project.id"
           :href="project.link"
           target="_blank"
-          class="group relative block rounded-3xl overflow-hidden bg-white dark:bg-white/[0.04] border border-black/5 dark:border-white/10 hover:border-black/10 dark:hover:border-white/20 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:shadow-purple-500/10"
+          class="group card-glow relative block rounded-3xl overflow-hidden bg-white dark:bg-white/[0.04] border border-black/5 dark:border-white/10 hover:border-black/10 dark:hover:border-white/20 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-purple-500/10 dark:hover:shadow-purple-500/5"
+          @mousemove="handleCardMouseMove"
           v-motion
           :initial="{ opacity: 0, y: 40 }"
           :visibleOnce="{ opacity: 1, y: 0, transition: { duration: 700, delay: index * 80, ease: [0.22, 1, 0.36, 1] } }"

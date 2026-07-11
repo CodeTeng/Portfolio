@@ -5,11 +5,16 @@ import { Icon } from '@iconify/vue'
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
+const scrollProgress = ref(0)
 const isDark = useDark({ initialValue: 'dark' })
 const toggleDark = useToggle(isDark)
 
 const checkScroll = () => {
   isScrolled.value = window.scrollY > 16
+  // Calculate scroll progress for the Apple-style progress bar
+  const scrollTop = window.scrollY
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight
+  scrollProgress.value = docHeight > 0 ? scrollTop / docHeight : 0
 }
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
@@ -38,6 +43,11 @@ const navItems = [
         : 'bg-transparent'
     ]"
   >
+    <!-- Scroll progress bar — Apple's signature thin gradient line -->
+    <div
+      class="scroll-progress"
+      :style="{ width: `${scrollProgress * 100}%` }"
+    ></div>
     <div
       class="max-w-7xl mx-auto px-6 flex items-center justify-between transition-all duration-500"
       :class="isScrolled ? 'h-12' : 'h-16'"

@@ -1,5 +1,22 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const scrollY = ref(0)
+const heroOpacity = ref(1)
+const heroTranslateY = ref(0)
+
+const handleScroll = () => {
+  scrollY.value = window.scrollY
+  // Fade out hero content as user scrolls down — Apple keynote dissolve effect
+  const fadeDistance = 400
+  heroOpacity.value = Math.max(0, 1 - scrollY.value / fadeDistance)
+  // Gentle parallax: content shifts up slightly slower than scroll
+  heroTranslateY.value = scrollY.value * 0.15
+}
+
+onMounted(() => window.addEventListener('scroll', handleScroll, { passive: true }))
+onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 const tickerLogos = [
   { icon: 'simple-icons:cursor', name: 'Cursor' },
@@ -45,7 +62,7 @@ const ticker = [...tickerLogos, ...tickerLogos]
       ></div>
     </div>
 
-    <div class="w-full max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <div class="w-full max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-8 items-center" :style="{ opacity: heroOpacity, transform: `translateY(${heroTranslateY}px)` }">
       <!-- Left: editorial story -->
       <div
         class="lg:col-span-7 text-center lg:text-left"
@@ -79,12 +96,12 @@ const ticker = [...tickerLogos, ...tickerLogos]
         <!-- KPI strip - Apple-product-page style -->
         <div class="mt-10 grid grid-cols-3 gap-4 max-w-xl mx-auto lg:mx-0">
           <div class="text-center lg:text-left">
-            <div class="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">4</div>
-            <div class="mt-1 text-xs uppercase tracking-widest text-gray-500 dark:text-gray-500">大厂 实习</div>
+            <div class="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">5</div>
+            <div class="mt-1 text-xs uppercase tracking-widest text-gray-500 dark:text-gray-500">大厂实习</div>
           </div>
           <div class="text-center lg:text-left border-l border-black/10 dark:border-white/10 pl-4">
             <div class="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">100<span class="text-xl">w+</span></div>
-            <div class="mt-1 text-xs uppercase tracking-widest text-gray-500 dark:text-gray-500">已发布字数</div>
+            <div class="mt-1 text-xs uppercase tracking-widest text-gray-500 dark:text-gray-500">语雀文档已发布字数</div>
           </div>
           <div class="text-center lg:text-left border-l border-black/10 dark:border-white/10 pl-4">
             <div class="text-3xl lg:text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">20<span class="text-xl">+</span></div>

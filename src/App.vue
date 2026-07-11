@@ -14,12 +14,24 @@ import Footer from './components/Footer.vue'
   <Header />
   <main class="w-full">
     <Hero />
-    <Projects />
-    <Experience />
-    <Expertise />
-    <Honors />
-    <Strengths />
-    <About />
+    <div class="section-blend-dark">
+      <Projects />
+    </div>
+    <div class="section-blend-light">
+      <Experience />
+    </div>
+    <div class="section-blend-dark">
+      <Expertise />
+    </div>
+    <div class="section-blend-light">
+      <Honors />
+    </div>
+    <div class="section-blend-dark">
+      <Strengths />
+    </div>
+    <div class="section-blend-light">
+      <About />
+    </div>
   </main>
   <Footer />
 </template>

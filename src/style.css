@@ -20,6 +20,8 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Apple-style text rendering */
+    text-rendering: optimizeLegibility;
   }
 
   #app {
@@ -30,29 +32,48 @@
     @apply bg-blue-500/30 text-current;
   }
 
-  /* Apple-style scrollbar */
+  /* Apple-style scrollbar — thinner, more refined */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(120, 120, 120, 0.3);
-    border-radius: 4px;
+    background: rgba(120, 120, 120, 0.2);
+    border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(120, 120, 120, 0.5);
+    background: rgba(120, 120, 120, 0.4);
   }
+}
+
+/* =====================================================
+   Subtle noise overlay — gives depth like Apple's
+   frosted surfaces and print-quality textures
+   ===================================================== */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px;
+}
+html.dark body::after {
+  opacity: 0.025;
 }
 
 /* =====================================================
    Reusable display utilities
    ===================================================== */
 .text-display {
-  letter-spacing: -0.035em;
-  font-weight: 600;
+  letter-spacing: -0.04em;
+  font-weight: 700;
   line-height: 1.05;
 }
 .text-eyebrow {
@@ -62,15 +83,15 @@
   text-transform: uppercase;
 }
 
-/* Soft gradient text accent */
+/* Soft gradient text accent — more vibrant, Apple-vivid */
 .text-gradient-cool {
-  background-image: linear-gradient(120deg, #5ac8fa 0%, #007aff 45%, #af52de 100%);
+  background-image: linear-gradient(135deg, #5ac8fa 0%, #007aff 40%, #af52de 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 .text-gradient-warm {
-  background-image: linear-gradient(120deg, #ff9f0a 0%, #ff375f 60%, #af52de 100%);
+  background-image: linear-gradient(135deg, #ff9f0a 0%, #ff375f 50%, #af52de 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -92,6 +113,85 @@
   -webkit-mask-composite: xor;
           mask-composite: exclude;
   pointer-events: none;
+}
+
+/* =====================================================
+   Apple-style card hover glow
+   ===================================================== */
+.card-glow {
+  position: relative;
+  overflow: hidden;
+}
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(120, 120, 255, 0.08),
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+/* =====================================================
+   Section color blend — smooth transitions between
+   alternating light/dark surfaces, like Apple pages
+   ===================================================== */
+.section-blend-light {
+  position: relative;
+}
+.section-blend-light::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, white, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+html.dark .section-blend-light::before {
+  background: linear-gradient(to bottom, black, transparent);
+}
+
+.section-blend-dark {
+  position: relative;
+}
+.section-blend-dark::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, #f9fafb, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+html.dark .section-blend-dark::before {
+  background: linear-gradient(to bottom, #050505, transparent);
+}
+
+/* =====================================================
+   Scroll progress bar — Apple's signature thin line
+   ===================================================== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #5ac8fa, #007aff, #af52de);
+  z-index: 9999;
+  transform-origin: left;
+  transition: none;
 }
 
 /* Gentle floating animation reused on hero badge */
@@ -125,3 +225,32 @@
   to { transform: rotate(360deg); }
 }
 .animate-spin-slow { animation: spin-slow 18s linear infinite; }
+
+/* =====================================================
+   Apple-style reveal animation — elements fade up
+   as you scroll into view, with spring-like ease
+   ===================================================== */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-reveal {
+  animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Staggered children animation helper */
+.stagger-children > * {
+  animation: reveal-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 80ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 160ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 320ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 400ms; }
