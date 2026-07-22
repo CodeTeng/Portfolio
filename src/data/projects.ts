@@ -10,6 +10,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: 10,
+    title: 'FitPedia 健身百科',
+    description: '一个基于 1324 个健身动作数据的在线百科全书，支持中英双语，兼容 Web 和移动端',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/jianshen.jpg',
+    tags: ['React', 'TypeScript', '健身', 'Tailwind CSS'],
+    link: 'https://fitness-3d59.vercel.app/',
+    github: 'https://github.com/CodeTeng/fitness'
+  },
+  {
     id: 9,
     title: 'KnowFlow RAG',
     description: 'KnowFlow RAG 是一个企业级智能问答系统，覆盖从文档入库到智能问答的完整链路，聚焦检索增强生成场景下的核心工程难题。',
@@ -28,6 +37,33 @@ export const projects: Project[] = [
     github: 'https://github.com/CodeTeng/mini-cc'
   },
   {
+    id: 11,
+    title: 'OpenSpec + Superpowers',
+    description: '基于 OpenSpec + SuperPowers SDD（规范驱动开发） 的通用项目模板',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/ChatGPT%20Image%202026%E5%B9%B47%E6%9C%8822%E6%97%A5%2022_22_38.png',
+    tags: ['OpenSpec', 'Superpowers AI', 'AI 原生开发', 'AI 提效'],
+    link: 'https://github.com/CodeTeng/Spec-Driven-Development-Template',
+    github: 'https://github.com/CodeTeng/Spec-Driven-Development-Template'
+  },
+  {
+    id: 12,
+    title: 'Teng Boot Scaffold',
+    description: '基于 Java 17 + Spring Boot 3.5.14 + Vue 3 + TypeScript 的现代化全栈脚手架',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/ChatGPT%20Image%202.png',
+    tags: ['Spring Boot', 'Vue 3', '脚手架'],
+    link: 'https://github.com/CodeTeng/teng-boot',
+    github: 'https://github.com/CodeTeng/teng-boot'
+  },
+    {
+    id: 4,
+    title: '万能视频下载工具',
+    description: '一款万能视频下载工具，支持B站、抖音、小红书、腾讯视频、YouTube、X等视频网站的下载',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/home.png',
+    tags: ['Vue 3', 'Python3', 'FastAPI', 'yt-dlp', 'ffmpeg', 'Redis'],
+    link: 'https://zailiu.vercel.app/',
+    github: 'https://github.com/CodeTeng/Zailiu'
+  },
+  {
     id: 2,
     title: 'Harness Template',
     description: 'Harness Engineering 模版，拿来即用，帮助快速搭建和标准化工程脚手架。',
@@ -44,24 +80,6 @@ export const projects: Project[] = [
     tags: ['AI', 'Monitor', 'Python', 'Automation'],
     link: 'https://github.com/CodeTeng/AI-Hot-Monitor',
     github: 'https://github.com/CodeTeng/AI-Hot-Monitor'
-  },
-  {
-    id: 4,
-    title: '万能视频下载工具',
-    description: '一款万能视频下载工具，支持B站、抖音、小红书、腾讯视频、YouTube、X等视频网站的下载',
-    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/home.png',
-    tags: ['Vue 3', 'Python3', 'FastAPI', 'yt-dlp', 'ffmpeg', 'Redis'],
-    link: 'https://zailiu.vercel.app/',
-    github: 'https://github.com/CodeTeng/Zailiu'
-  },
-  {
-    id: 5,
-    title: 'Vibe Coding 开发前必做步骤',
-    description: 'Vibe Coding 开发前必做步骤，帮助你快速上手开发',
-    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/1.png',
-    tags: ['Vibe Coding', 'Workflow', 'AI', 'Tools'],
-    link: 'https://vibe-coding-workflow-rho.vercel.app/',
-    github: 'https://github.com/CodeTeng/Vibe-Coding-workflow'
   },
   {
     id: 6,
@@ -91,12 +109,12 @@ export const projects: Project[] = [
     github: 'https://github.com/CodeTeng/ImageGenerator'
   },
   {
-    id: 10,
-    title: 'Social Media Dashboard',
-    description: '跨平台社交媒体数据分析工具，提供详细的用户增长和互动报告。',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop',
-    tags: ['Vue 3', 'D3.js', 'Analytics', 'REST API'],
-    link: '#',
-    github: 'https://github.com'
-  }
+    id: 5,
+    title: 'Vibe Coding 开发前必做步骤',
+    description: 'Vibe Coding 开发前必做步骤，帮助你快速上手开发',
+    image: 'https://muziteng-1310538376.cos.ap-beijing.myqcloud.com/1.png',
+    tags: ['Vibe Coding', 'Workflow', 'AI', 'Tools'],
+    link: 'https://vibe-coding-workflow-rho.vercel.app/',
+    github: 'https://github.com/CodeTeng/Vibe-Coding-workflow'
+  },
 ]
